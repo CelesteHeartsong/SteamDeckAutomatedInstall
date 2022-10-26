@@ -58,7 +58,7 @@ Invoke-WebRequest -URI "https://www.autohotkey.com/download/ahk-install.exe" -Ou
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- AutoHotkey Script: "
-Invoke-WebRequest -URI "https://raw.githubusercontent.com/baldsealion/Steamdeck-Ultimate-Windows11-Guide/main/AutoHotKey_Scripts/Checkmate_hotkeys.ahk" -OutFile ".\Checkmate_Hotkeys.ahk"
+Invoke-WebRequest -URI "https://raw.githubusercontent.com/CelesteHeartsong/SteamDeckAutomatedInstall/main/SteamDeckAHK.ahk" -OutFile ".\SteamDeckAHK.ahk"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Nircmd Package: "
@@ -191,12 +191,16 @@ Write-Host -NoNewline "- AutoHotkey: "
 Start-Process -FilePath ".\AutoHotkey_Setup.exe" -Wait
 Write-Host -ForegroundColor Green "Done"
 
+Write-Host -NoNewline "- Create C:\DeckUtils: "
+New-Item C:\DeckUtils -ItemType Directory -ErrorAction SilentlyContinue >> $null
+Write-Host -ForegroundColor Green "Done"
+
 Write-Host -NoNewline "- NirCmd: "
-Expand-Archive ".\nircmd.zip" "C:\nircmd" -Force
+Expand-Archive ".\nircmd.zip" "C:\DeckUtils\nircmd" -Force
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- RyzenAdj: "
-Expand-Archive ".\ryzenadj.zip" "C:\ryzenadj" -Force
+Expand-Archive ".\ryzenadj.zip" "C:\DeckUtils\ryzenadj" -Force
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- EqualizerAPO: "
@@ -217,12 +221,13 @@ Start-Process -FilePath "C:\Program Files (x86)\HID Virtual Device Kit Standard 
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Adding Default SWICD config: "
-Copy-Item ".\app_config.json" -Destination "~\Documents\SWICD\appconfig.json" -Force
+New-Item ~\Documents\SWICD -ItemType Directory -ErrorAction SilentlyContinue >> $null
+Copy-Item ".\app_config.json" -Destination "~\Documents\SWICD\app_config.json" -Force
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Setting AHK Script to run on login: "
-Copy-Item ".\Checkmate_Hotkeys.ahk" -Destination "C:\Checkmate_Hotkeys.ahk" -Force
-$action = New-ScheduledTaskAction -Execute "C:\Program Files\AutoHotkey\AutoHotkey.exe" -Argument "C:\Checkmate_Hotkeys.ahk" 
+Copy-Item ".\SteamDeckAHK.ahk" -Destination "C:\DeckUtils\SteamDeckAHK.ahk" -Force
+$action = New-ScheduledTaskAction -Execute "C:\Program Files\AutoHotkey\AutoHotkey.exe" -Argument "C:\DeckUtils\SteamDeckAHK.ahk" 
 $trigger = New-ScheduledTaskTrigger -AtLogOn
 $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries
 $description = "Start AutoHotkey at Login"
@@ -240,3 +245,5 @@ Write-Host -ForegroundColor Green "Done"
 
 Write-Host "-----------------------------------------------------------------------"
 Write-Host
+
+Write-Host " Script Completed! Please reboot your system to apply drivers/EDID/configuration."
