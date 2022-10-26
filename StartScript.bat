@@ -1,0 +1,1 @@
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& .\SteamDeckAutomatedInstall.ps1" 
