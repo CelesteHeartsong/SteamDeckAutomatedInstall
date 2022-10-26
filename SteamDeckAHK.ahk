@@ -20,7 +20,7 @@ DllCall("ntdll\ZwSetTimerResolution","Int",5000,"Int",1,"Int*",MyCurrentTimerRes
 ; Examples 2: C:\ryzenadj\ryzenadj.exe
 
 nircmdPath := "C:\DeckUtils\nircmd\nircmd.exe"
-ryzenadjPath := "C:\DeckUtilsryzenadj\ryzenadj.exe"
+ryzenadjPath := "C:\DeckUtils\ryzenadj\ryzenadj.exe"
 
 ; TDP Adjuster requires Elevated CMD, this is the necessary check to make sure that it is the case.
 
