@@ -36,7 +36,7 @@ if !A_IsAdmin {
 ; On Script Reload, TDP will default back to 9W
 
 TrayTip, ,TDP set to 15W, 1, 0
-Sleep 1000
+Sleep 2000
 HideTrayTip()
 defaultSlowFast := 15000
 defaultStamp := 1500
@@ -47,7 +47,7 @@ return
 ; Win + Numpad 4 ==> Set Default TDP to 9W
 #Numpad4::
 TrayTip, ,Set TDP to 15W, 1, 0
-Sleep 1000
+Sleep 2000
 HideTrayTip()
 defaultSlowFast := 15000
 defaultStamp := 1500
