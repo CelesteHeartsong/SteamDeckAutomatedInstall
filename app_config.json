@@ -1,0 +1,304 @@
+{
+  "GenericSettings": {
+    "BlacklistedProcesses": [],
+    "WhitelistedProcesses": [],
+    "OperationMode": 0,
+    "StartWithWindows": true,
+    "StartMinimized": true
+  },
+  "DefaultControllerConfig": {
+    "Executable": null,
+    "ProfileSettings": {
+      "DisableLizardMouse": false,
+      "DisableLizardButtons": true,
+      "HapticFeedbackEnabled": true,
+      "HapticFeedbackAmplitude": 30,
+      "HapticFeedbackPeriod": 30
+    },
+    "ButtonMapping": {
+      "BtnX": "BtnX",
+      "BtnY": "BtnY",
+      "BtnA": "BtnA",
+      "BtnB": "BtnB",
+      "BtnMenu": "BtnBack",
+      "BtnOptions": "BtnStart",
+      "BtnSteam": "None",
+      "BtnQuickAccess": "None",
+      "BtnDpadUp": "BtnDpadUp",
+      "BtnDpadLeft": "BtnDpadLeft",
+      "BtnDpadRight": "BtnDpadRight",
+      "BtnDpadDown": "BtnDpadDown",
+      "BtnL1": "BtnLB",
+      "BtnR1": "BtnRB",
+      "BtnL2": "None",
+      "BtnR2": "None",
+      "BtnL4": "None",
+      "BtnR4": "None",
+      "BtnL5": "None",
+      "BtnR5": "None",
+      "BtnRPadPress": "None",
+      "BtnLPadPress": "None",
+      "BtnRPadTouch": "None",
+      "BtnLPadTouch": "None",
+      "BtnRStickPress": "BtnRS",
+      "BtnLStickPress": "BtnLS",
+      "BtnRStickTouch": "None",
+      "BtnLStickTouch": "None"
+    },
+    "AxisMapping": {
+      "LeftStickX": {
+        "EmulatedAxis": "LeftStickX",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "LeftStickY": {
+        "EmulatedAxis": "LeftStickY",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "RightStickX": {
+        "EmulatedAxis": "RightStickX",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "RightStickY": {
+        "EmulatedAxis": "RightStickY",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "LeftPadX": {
+        "EmulatedAxis": "None",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "LeftPadY": {
+        "EmulatedAxis": "None",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "RightPadX": {
+        "EmulatedAxis": "None",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "RightPadY": {
+        "EmulatedAxis": "None",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "RightPadPressure": {
+        "EmulatedAxis": "None",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "LeftPadPressure": {
+        "EmulatedAxis": "None",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "L2": {
+        "EmulatedAxis": "LT",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "R2": {
+        "EmulatedAxis": "RT",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "GyroAccelX": {
+        "EmulatedAxis": "None",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "GyroAccelY": {
+        "EmulatedAxis": "None",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "GyroAccelZ": {
+        "EmulatedAxis": "None",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "GyroRoll": {
+        "EmulatedAxis": "None",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "GyroPitch": {
+        "EmulatedAxis": "None",
+        "ActivationButton": "None",
+        "Inverted": false
+      },
+      "GyroYaw": {
+        "EmulatedAxis": "None",
+        "ActivationButton": "None",
+        "Inverted": false
+      }
+    },
+    "KeyboardMapping": {
+      "BtnX": "NONE",
+      "BtnY": "NONE",
+      "BtnA": "NONE",
+      "BtnB": "NONE",
+      "BtnMenu": "NONE",
+      "BtnOptions": "NONE",
+      "BtnSteam": "NONE",
+      "BtnQuickAccess": "NONE",
+      "BtnDpadUp": "NONE",
+      "BtnDpadLeft": "NONE",
+      "BtnDpadRight": "NONE",
+      "BtnDpadDown": "NONE",
+      "BtnL1": "NONE",
+      "BtnR1": "NONE",
+      "BtnL2": "NONE",
+      "BtnR2": "NONE",
+      "BtnL4": "K5",
+      "BtnR4": "K8",
+      "BtnL5": "K6",
+      "BtnR5": "K7",
+      "BtnRPadPress": "NONE",
+      "BtnLPadPress": "NONE",
+      "BtnRPadTouch": "NONE",
+      "BtnLPadTouch": "NONE",
+      "BtnRStickPress": "NONE",
+      "BtnLStickPress": "NONE",
+      "BtnRStickTouch": "NONE",
+      "BtnLStickTouch": "NONE"
+    },
+    "MouseMapping": {
+      "BtnX": "NONE",
+      "BtnY": "NONE",
+      "BtnA": "NONE",
+      "BtnB": "NONE",
+      "BtnMenu": "NONE",
+      "BtnOptions": "NONE",
+      "BtnSteam": "NONE",
+      "BtnQuickAccess": "NONE",
+      "BtnDpadUp": "NONE",
+      "BtnDpadLeft": "NONE",
+      "BtnDpadRight": "NONE",
+      "BtnDpadDown": "NONE",
+      "BtnL1": "NONE",
+      "BtnR1": "NONE",
+      "BtnL2": "NONE",
+      "BtnR2": "NONE",
+      "BtnL4": "NONE",
+      "BtnR4": "NONE",
+      "BtnL5": "NONE",
+      "BtnR5": "NONE",
+      "BtnRPadPress": "LBUTTON",
+      "BtnLPadPress": "RBUTTON",
+      "BtnRPadTouch": "NONE",
+      "BtnLPadTouch": "NONE",
+      "BtnRStickPress": "NONE",
+      "BtnLStickPress": "NONE",
+      "BtnRStickTouch": "NONE",
+      "BtnLStickTouch": "NONE"
+    }
+  },
+  "ButtonActions": {
+    "BtnSteam+BtnX": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LCTRL]+[LWIN]+o"
+    },
+    "BtnSteam+BtnB": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LALT]+F4"
+    },
+    "BtnSteam+BtnY": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LALT]+TAB"
+    },
+    "BtnSteam+BtnA": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LCTRL]+[LSHIFT]+ESCAPE"
+    },
+    "BtnSteam+BtnDpadLeft": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LWIN]+K7"
+    },
+    "BtnSteam+BtnDpadUp": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LWIN]+K5"
+    },
+    "BtnSteam+BtnDpadRight": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LWIN]+K4"
+    },
+    "BtnSteam+BtnDpadDown": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LWIN]+K6"
+    },
+    "BtnSteam+BtnL1": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LSHIFT]+[LALT]+n"
+    },
+    "BtnSteam+BtnR1": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LSHIFT]+[LALT]+m"
+    },
+    "BtnSteam+BtnQuickAccess": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LWIN]+a"
+    },
+    "BtnQuickAccess+BtnL1": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LSHIFT]+[LALT]+3"
+    },
+    "BtnQuickAccess+BtnR1": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LSHIFT]+[LALT]+4"
+    },
+    "BtnQuickAccess+BtnDpadUp": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LALT]+m"
+    },
+    "BtnQuickAccess+BtnDpadLeft": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LSHIFT]+[LALT]+1"
+    },
+    "BtnQuickAccess+BtnDpadDown": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LALT]+K1"
+    },
+    "BtnQuickAccess+BtnDpadRight": {
+      "Type": "keyboard-shortcut",
+      "Data": "[LSHIFT]+[LALT]+2"
+    },
+    "BtnSteam+BtnL4": {
+      "Type": "keyboard-shortcut",
+      "Data": "K1"
+    },
+    "BtnSteam+BtnR4": {
+      "Type": "keyboard-shortcut",
+      "Data": "K4"
+    },
+    "BtnSteam+BtnL5": {
+      "Type": "keyboard-shortcut",
+      "Data": "K2"
+    },
+    "BtnSteam+BtnR5": {
+      "Type": "keyboard-shortcut",
+      "Data": "K3"
+    },
+    "BtnQuickAccess+BtnL4": {
+      "Type": "keyboard-shortcut",
+      "Data": "K9"
+    },
+    "BtnQuickAccess+BtnR4": {
+      "Type": "keyboard-shortcut",
+      "Data": "K-"
+    },
+    "BtnQuickAccess+BtnL5": {
+      "Type": "keyboard-shortcut",
+      "Data": "K0"
+    },
+    "BtnQuickAccess+BtnR5": {
+      "Type": "keyboard-shortcut",
+      "Data": "K*"
+    }
+  },
+  "PerProcessControllerConfig": []
+}
