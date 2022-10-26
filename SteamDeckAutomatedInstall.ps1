@@ -50,7 +50,7 @@ Invoke-WebRequest -URI "https://github.com/mKenfenheuer/steam-deck-windows-userm
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- SWICD Config: "
-Invoke-WebRequest -URI "https://github.com/baldsealion/Steamdeck-Ultimate-Windows11-Guide/raw/main/SWICD/app_config.zip" -Outfile ".\app_config.zip"
+Invoke-WebRequest -URI "https://raw.githubusercontent.com/CelesteHeartsong/SteamDeckAutomatedInstall/main/app_config.json" -Outfile ".\app_config.json"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- AutoHotkey Setup: "
@@ -70,15 +70,19 @@ Invoke-WebRequest -URI "https://github.com/FlyGoat/RyzenAdj/releases/download/v0
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- EqualizerAPO: "
-Invoke-WebRequest -UserAgent "Wget" -Uri "https://sourceforge.net/projects/equalizerapo/files/latest/download" -OutFile ".\EqualizerAPO_Setup.exe"
+Invoke-WebRequest -UserAgent "Wget" -URI "https://sourceforge.net/projects/equalizerapo/files/latest/download" -OutFile ".\EqualizerAPO_Setup.exe"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Peace GUI: "
-Invoke-WebRequest -UserAgent "Wget" -Uri "https://sourceforge.net/projects/peace-equalizer-apo-extension/files/latest/download" -OutFile ".\Peace_Setup.exe"
+Invoke-WebRequest -UserAgent "Wget" -URI "https://sourceforge.net/projects/peace-equalizer-apo-extension/files/latest/download" -OutFile ".\Peace_Setup.exe"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- SteamDeck Peace Config: "
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/baldsealion/Steamdeck-Ultimate-Windows11-Guide/main/Peace%20settings/SteamDeck.peace" -OutFile ".\SteamDeck.peace"
+Invoke-WebRequest -URI "https://raw.githubusercontent.com/baldsealion/Steamdeck-Ultimate-Windows11-Guide/main/Peace%20settings/SteamDeck.peace" -OutFile ".\SteamDeck.peace"
+Write-Host -ForegroundColor Green "Done"
+
+Write-Host -NoNewline "- EDID Setup: "
+Invoke-WebRequest -URI "https://raw.githubusercontent.com/CelesteHeartsong/SteamDeckAutomatedInstall/main/EDID_Setup.bat" -OutFile ".\EDID_Setup.bat"
 Write-Host -ForegroundColor Green "Done"
 
 
@@ -213,11 +217,11 @@ Start-Process -FilePath "C:\Program Files (x86)\HID Virtual Device Kit Standard 
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Adding Default SWICD config: "
-Expand-Archive ".\app_config.zip" "~\Documents" -Force
+Copy-Item ".\app_config.json" -Destination "~\Documents\SWICD\appconfig.json" -Force
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Setting AHK Script to run on login: "
-Copy-Item ".\Checkmate_Hotkeys.ahk" -Destination "C:\Checkmate_Hotkeys.ahk"
+Copy-Item ".\Checkmate_Hotkeys.ahk" -Destination "C:\Checkmate_Hotkeys.ahk" -Force
 $action = New-ScheduledTaskAction -Execute "C:\Program Files\AutoHotkey\AutoHotkey.exe" -Argument "C:\Checkmate_Hotkeys.ahk" 
 $trigger = New-ScheduledTaskTrigger -AtLogOn
 $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries
@@ -226,8 +230,12 @@ Register-ScheduledTask -TaskName "AutoHotkey" -Action $action -Trigger $trigger 
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Setting up Peace Config: "
-Copy-Item ".\SteamDeck.peace" -Destination "C:\Program Files\EqualizerAPO\config\SteamDeck.peace"
+Copy-Item ".\SteamDeck.peace" -Destination "C:\Program Files\EqualizerAPO\config\SteamDeck.peace" -Force
 Start-Process -FilePath ".\Peace_Setup.exe" -Wait
+Write-Host -ForegroundColor Green "Done"
+
+Write-Host -NoNewline "- Overwriting EDID: "
+Start-Process -FilePath ".\EDID_Setup.bat" -Wait
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host "-----------------------------------------------------------------------"
