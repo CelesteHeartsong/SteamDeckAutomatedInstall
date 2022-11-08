@@ -189,7 +189,7 @@ Write-Host "Downloading Required Files"
 Write-Host "-----------------------------------------------------------------------"
 
 Write-Host -NoNewline "- APU Chipset Drivers from Valve: "
-Invoke-WebRequest -URI "https://steamdeck-packages.steamos.cloud/misc/windows/drivers/APU_220520a-377788E-2206021014.zip" -OutFile ".\APU_Drivers.zip"
+Invoke-WebRequest -URI "https://steamdeck-packages.steamos.cloud/misc/windows/drivers/Aerith%20Windows%20Driver_2209130944.zip" -OutFile ".\APU_Drivers.zip"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Audio Drivers 1/2 from Valve (cs35l41): "
