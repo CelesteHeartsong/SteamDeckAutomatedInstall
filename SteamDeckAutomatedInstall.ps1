@@ -303,7 +303,7 @@ Write-Host "--------------------------------------------------------------------
 
 Write-Host -NoNewline "- Installing APU Chipset: "
 Expand-Archive ".\APU_Drivers.zip" -DestinationPath ".\APU_Drivers" -Force
-Start-Process .\APU_Drivers\220520a-377788E-2206021014\Setup.exe -Wait
+Start-Process .\APU_Drivers\Aerith Windows Driver_2209130944\220913a-383120E-2209130944\Setup.exe -Wait
 $apicall::SystemParametersInfo(0x009F, 4294967295, $null, 1) | Out-Null
 Set-ScreenResolutionAndOrientation
 Write-Host -ForegroundColor Green "Done"
