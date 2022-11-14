@@ -264,12 +264,6 @@ Write-Host -NoNewline "- SteamDeck Peace Config: "
 Invoke-WebRequest -URI "https://raw.githubusercontent.com/baldsealion/Steamdeck-Ultimate-Windows11-Guide/main/Peace%20settings/SteamDeck.peace" -OutFile ".\SteamDeck.peace"
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- EDID Setup: "
-Invoke-WebRequest -URI "https://raw.githubusercontent.com/CelesteHeartsong/SteamDeckAutomatedInstall/main/EDID_Setup.bat" -OutFile ".\EDID_Setup.bat"
-Write-Host -ForegroundColor Green "Done"
-
-
-
 Write-Host "-----------------------------------------------------------------------"
 Write-Host
 
@@ -422,10 +416,6 @@ Write-Host -ForegroundColor Green "Done"
 Write-Host -NoNewline "- Setting up Peace Config: "
 Copy-Item ".\SteamDeck.peace" -Destination "C:\Program Files\EqualizerAPO\config\SteamDeck.peace" -Force
 Start-Process -FilePath ".\Peace_Setup.exe" -Wait
-Write-Host -ForegroundColor Green "Done"
-
-Write-Host -NoNewline "- Overwriting EDID: "
-Start-Process -FilePath ".\EDID_Setup.bat" -Wait
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host "-----------------------------------------------------------------------"
