@@ -421,4 +421,5 @@ Write-Host -ForegroundColor Green "Done"
 Write-Host "-----------------------------------------------------------------------"
 Write-Host
 
-Write-Host " Script Completed! Please reboot your system to apply drivers/EDID/configuration."
+Write-Host " Script Completed! Please reboot your system to apply drivers/EDID/configuration. Press enter key to exit."
+Read-Host
