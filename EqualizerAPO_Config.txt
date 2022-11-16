@@ -1,0 +1,10 @@
+Device: AMD Audio Device Speakers {56677ba4-d1c6-4e64-b6d7-c326c1eed2a3}
+Channel: all
+Preamp: -5 dB
+Filter 4: ON LSC 0.5 dB Fc 140 Hz Gain 6.5 dB
+Filter 6: ON PK Fc 750 Hz Gain 3 dB Q 4.1
+Filter 7: ON PK Fc 750 Hz Gain -9.3 dB Q 5.2
+Filter 8: ON PK Fc 221 Hz Gain 9.2 dB Q 1.29
+Filter 9: ON PK Fc 1257 Hz Gain 2.4 dB Q 1.644
+Filter 10: ON PK Fc 8552 Hz Gain -1 dB Q 1
+Filter 11: ON PK Fc 12648 Hz Gain -5.6 dB Q 2.2
