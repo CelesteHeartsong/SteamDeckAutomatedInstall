@@ -217,19 +217,19 @@
     },
     "BtnSteam+BtnDpadLeft": {
       "Type": "keyboard-shortcut",
-      "Data": "[LWIN]+K7"
+      "Data": "[LCTRL]+[LSHIFT]+l"
     },
     "BtnSteam+BtnDpadUp": {
       "Type": "keyboard-shortcut",
-      "Data": "[LWIN]+K5"
+      "Data": "[LCTRL]+[LSHIFT]+u"
     },
     "BtnSteam+BtnDpadRight": {
       "Type": "keyboard-shortcut",
-      "Data": "[LWIN]+K4"
+      "Data": "[LCTRL]+[LSHIFT]+r"
     },
     "BtnSteam+BtnDpadDown": {
       "Type": "keyboard-shortcut",
-      "Data": "[LWIN]+K6"
+      "Data": "[LCTRL]+[LSHIFT]+d"
     },
     "BtnSteam+BtnL1": {
       "Type": "keyboard-shortcut",
@@ -253,19 +253,19 @@
     },
     "BtnQuickAccess+BtnDpadUp": {
       "Type": "keyboard-shortcut",
-      "Data": "[LALT]+m"
+      "Data": ""
     },
     "BtnQuickAccess+BtnDpadLeft": {
       "Type": "keyboard-shortcut",
-      "Data": "[LSHIFT]+[LALT]+1"
+      "Data": ""
     },
     "BtnQuickAccess+BtnDpadDown": {
       "Type": "keyboard-shortcut",
-      "Data": "[LALT]+K1"
+      "Data": ""
     },
     "BtnQuickAccess+BtnDpadRight": {
       "Type": "keyboard-shortcut",
-      "Data": "[LSHIFT]+[LALT]+2"
+      "Data": ""
     },
     "BtnSteam+BtnL4": {
       "Type": "keyboard-shortcut",
