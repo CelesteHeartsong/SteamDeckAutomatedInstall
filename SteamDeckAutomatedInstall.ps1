@@ -201,7 +201,11 @@ Invoke-WebRequest -URI "https://steamdeck-packages.steamos.cloud/misc/windows/dr
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Wireless LAN Drivers from Realtek: "
-Invoke-WebRequest -URI "https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2022/09/5fdcc0af-6e27-49c3-94e1-9b9936427f67_62d4379506801391f4f1516d837d98c5d0133f22.cab" -OutFile ".\WLAN_Drivers.cab"
+Invoke-WebRequest -URI "https://catalog.s.download.windowsupdate.com/c/msdownload/update/driver/drvs/2022/08/0270b436-5cac-4a52-aa88-e8e1fb7a999d_a5b613e26699adc437dca952f733dbcf5f184dee.cab" -OutFile ".\WLAN_Drivers.cab"
+Write-Host -ForegroundColor Green "Done"
+
+Write-Host -NoNewline "- Bluetooth Drivers from Realtek: "
+Invoke-WebRequest -URI "https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2022/08/ad501382-9e48-4720-92c7-bcee5374671e_501f5f234304610bbbc221823de181e544c1bc09.cab" -OutFile ".\Bluetooth_Drivers.cab"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- MicroSD Card Reader Drivers from BayHubTech: "
@@ -214,6 +218,10 @@ Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- DirectX Web Setup: "
 Invoke-WebRequest -URI "https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe" -OutFile ".\DirectX.exe"
+Write-Host -ForegroundColor Green "Done"
+
+Write-Host -NoNewline "- .NET 6.0 Setup: "
+Invoke-WebRequest -URI "https://download.visualstudio.microsoft.com/download/pr/08ada4db-1e64-4829-b36d-5beb71f67bff/b77050cf7e0c71d3b95418651db1a9b8/dotnet-sdk-6.0.403-win-x64.exe" -OutFile ".\dotnet6.0_Setup.exe"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- ViGEmBus Setup: "
@@ -236,14 +244,6 @@ Write-Host -NoNewline "- SWICD Config: "
 Invoke-WebRequest -URI "https://raw.githubusercontent.com/CelesteHeartsong/SteamDeckAutomatedInstall/main/app_config.json" -Outfile ".\app_config.json"
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- AutoHotkey Setup: "
-Invoke-WebRequest -URI "https://www.autohotkey.com/download/ahk-install.exe" -OutFile ".\AutoHotkey_Setup.exe"
-Write-Host -ForegroundColor Green "Done"
-
-Write-Host -NoNewline "- AutoHotkey Script: "
-Invoke-WebRequest -URI "https://raw.githubusercontent.com/CelesteHeartsong/SteamDeckAutomatedInstall/main/SteamDeckAHK.ahk" -OutFile ".\SteamDeckAHK.ahk"
-Write-Host -ForegroundColor Green "Done"
-
 Write-Host -NoNewline "- Nircmd Package: "
 Invoke-WebRequest -URI "http://www.nirsoft.net/utils/nircmd-x64.zip" -OutFile ".\nircmd.zip"
 Write-Host -ForegroundColor Green "Done"
@@ -252,16 +252,20 @@ Write-Host -NoNewline "- RyzenAdj Package: "
 Invoke-WebRequest -URI "https://github.com/FlyGoat/RyzenAdj/releases/download/v0.11.1/ryzenadj-win64.zip" -OutFile ".\ryzenadj.zip"
 Write-Host -ForegroundColor Green "Done"
 
+Write-Host -NoNewline "- RivaTuner Setup: "
+Invoke-WebRequest -URI "https://www.filecroco.com/download-file/download-rivatuner-statistics-server/14914/2360/" -OutFile ".\RivaTuner_Setup.exe"
+Write-Host -ForegroundColor Green "Done"
+
+Write-Host -NoNewline "- SteamDeckTools: "
+Invoke-WebRequest -URI "https://github.com/ayufan-research/steam-deck-tools/releases/download/0.3.12/SteamDeckTools-0.3.12.zip" -OutFile ".\SteamDeckTools.zip"
+Write-Host -ForegroundColor Green "Done"
+
 Write-Host -NoNewline "- EqualizerAPO: "
 Invoke-WebRequest -UserAgent "Wget" -URI "https://sourceforge.net/projects/equalizerapo/files/latest/download" -OutFile ".\EqualizerAPO_Setup.exe"
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- Peace GUI: "
-Invoke-WebRequest -UserAgent "Wget" -URI "https://sourceforge.net/projects/peace-equalizer-apo-extension/files/latest/download" -OutFile ".\Peace_Setup.exe"
-Write-Host -ForegroundColor Green "Done"
-
-Write-Host -NoNewline "- SteamDeck Peace Config: "
-Invoke-WebRequest -URI "https://raw.githubusercontent.com/baldsealion/Steamdeck-Ultimate-Windows11-Guide/main/Peace%20settings/SteamDeck.peace" -OutFile ".\SteamDeck.peace"
+Write-Host -NoNewline "- EqualizerAPO Config: "
+Invoke-WebRequest -UserAgent "Wget" -URI "https://raw.githubusercontent.com/CelesteHeartsong/SteamDeckAutomatedInstall/main/EqualizerAPO_Config.txt" -OutFile ".\EqualizerAPO_Config.txt"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host "-----------------------------------------------------------------------"
@@ -286,6 +290,10 @@ Write-Host -NoNewline "- Setting internal Clock to UTC: "
 Start-Process -FilePath "reg" -ArgumentList "add `"HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation`" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f" -Wait
 Write-Host -ForegroundColor Green "Done"
 
+Write-Host -NoNewline "- Disable GameDVR: "
+Start-Process -FilePath "reg" -ArgumentList "add `"HKEY_CURRENT_USER\System\GameConfigStore`" /f /v GameDVR_Enabled /t REG_DWORD /d 0" -Wait
+Write-Host -ForegroundColor Green "Done"
+
 Write-Host "-----------------------------------------------------------------------"
 Write-Host
 
@@ -297,9 +305,9 @@ Write-Host "--------------------------------------------------------------------
 
 Write-Host -NoNewline "- Installing APU Chipset: "
 Expand-Archive ".\APU_Drivers.zip" -DestinationPath ".\APU_Drivers" -Force
-Start-Process ".\APU_Drivers\Aerith Windows Driver_2209130944\220913a-383120E-2209130944\Setup.exe" -Wait
+Start-Process ".\APU_Drivers\Aerith Windows Driver_2209130944\220913a-383120E-2209130944\Setup.exe" -Wait | Out-Null
 $apicall::SystemParametersInfo(0x009F, 4294967295, $null, 1) | Out-Null
-Set-ScreenResolutionAndOrientation
+Set-ScreenResolutionAndOrientation | Out-Null
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Audio Drivers 1/2: "
@@ -316,6 +324,12 @@ Write-Host -NoNewline "- WLAN Drivers: "
 New-Item .\WLAN_Drivers -ItemType Directory -ErrorAction SilentlyContinue >> $null
 Start-Process -FilePath "expand.exe" -ArgumentList "-F:* .\WLAN_Drivers.cab .\WLAN_Drivers" -Wait
 Start-Process -FilePath "PNPUtil.exe" -ArgumentList "/add-driver `".\WLAN_Drivers\netrtwlane.inf`" /install" -Wait
+Write-Host -ForegroundColor Green "Done"
+
+Write-Host -NoNewline "- Bluetooth Drivers: "
+New-Item .\Bluetooth_Drivers -ItemType Directory -ErrorAction SilentlyContinue >> $null
+Start-Process -FilePath "expand.exe" -ArgumentList "-F:* .\Bluetooth_Drivers.cab .\Bluetooth_Drivers" -Wait
+Start-Process -FilePath "PNPUtil.exe" -ArgumentList "/add-driver `".\Bluetooth_Drivers\Rtkfilter.inf`" /install" -Wait
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- MicroSD Drivers: "
@@ -342,16 +356,20 @@ Write-Host -NoNewline "- DirectX Web Setup: "
 Start-Process -FilePath ".\DirectX.exe" -ArgumentList "/Q" -Wait
 Write-Host -ForegroundColor Green "Done"
 
+Write-Host -NoNewline "- .NET 6.0: "
+Start-Process -FilePath ".\dotnet6.0_Setup.exe" -ArgumentList "/quiet /norestart" -Wait
+Write-Host -ForegroundColor Green "Done"
+
 Write-Host "-----------------------------------------------------------------------"
 Write-Host
 
 
 
-Write-Host "Installing Software (Use Default Paths)"
+Write-Host "Installing Software (Select Speakers when requested)"
 Write-Host "-----------------------------------------------------------------------"
 
 Write-Host -NoNewline "- ViGEmBus: "
-Start-Process -FilePath ".\ViGEmBus_Setup.exe" -Wait
+Start-Process -FilePath ".\ViGEmBus_Setup.exe" -ArgumentList "/qn /norestart" -Wait
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- HVDK (Tetherscript): "
@@ -359,15 +377,11 @@ Start-Process -FilePath ".\HVDK_Setup.exe" -ArgumentList "/VERYSILENT" -Wait
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- HidHide: "
-Start-Process -FilePath ".\HidHide_Setup.exe" -Wait
+Start-Process -FilePath ".\HidHide_Setup.exe" -ArgumentList "/qn /norestart" -Wait
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- SWICD: "
-Start-Process -FilePath ".\SWICD_Setup.exe" -Wait
-Write-Host -ForegroundColor Green "Done"
-
-Write-Host -NoNewline "- AutoHotkey: "
-Start-Process -FilePath ".\AutoHotkey_Setup.exe" -Wait
+Start-Process -FilePath ".\SWICD_Setup.exe" -ArgumentList "/S" -Wait
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Create C:\DeckUtils: "
@@ -382,8 +396,17 @@ Write-Host -NoNewline "- RyzenAdj: "
 Expand-Archive ".\ryzenadj.zip" "C:\DeckUtils\ryzenadj" -Force
 Write-Host -ForegroundColor Green "Done"
 
+Write-Host -NoNewline "- RivaTuner: "
+Start-Process -FilePath ".\RivaTuner_Setup.exe" -ArgumentList "/S" -Wait
+Write-Host -ForegroundColor Green "Done"
+
+Write-Host -NoNewline "- SteamDeckTools: "
+Expand-Archive ".\SteamDeckTools.zip" "C:\DeckUtils\SteamDeckTools" -Force
+Write-Host -ForegroundColor Green "Done"
+
 Write-Host -NoNewline "- EqualizerAPO: "
-Start-Process -FilePath ".\EqualizerAPO_Setup.exe" -Wait
+Start-Process -FilePath ".\EqualizerAPO_Setup.exe" -ArgumentList "/S" -Wait
+Copy-Item ".\EqualizerAPO_Config.txt" -Destination "C:\Program Files\EqualizerAPO\config\config.txt" -Force
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host "-----------------------------------------------------------------------"
@@ -404,22 +427,36 @@ New-Item ~\Documents\SWICD -ItemType Directory -ErrorAction SilentlyContinue >> 
 Copy-Item ".\app_config.json" -Destination "~\Documents\SWICD\app_config.json" -Force
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- Setting AHK Script to run on login: "
-Copy-Item ".\SteamDeckAHK.ahk" -Destination "C:\DeckUtils\SteamDeckAHK.ahk" -Force
-$action = New-ScheduledTaskAction -Execute "C:\Program Files\AutoHotkey\AutoHotkey.exe" -Argument "C:\DeckUtils\SteamDeckAHK.ahk" 
 $trigger = New-ScheduledTaskTrigger -AtLogOn
-$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries
-$description = "Start AutoHotkey at Login"
-Register-ScheduledTask -TaskName "AutoHotkey" -Action $action -Trigger $trigger -RunLevel Highest -Description $description -Settings $settings >> $null
+$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+
+Write-Host -NoNewline "- Setting RivaTuner to run on login: "
+$action = New-ScheduledTaskAction -Execute "C:\Program Files (x86)\RivaTuner Statistics Server\RTSS.exe"
+$description = "Start RivaTuner at Login"
+Register-ScheduledTask -TaskName "RivaTuner" -Action $action -Trigger $trigger -RunLevel Highest -Description $description -Settings $settings >> $null
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- Setting up Peace Config: "
-Copy-Item ".\SteamDeck.peace" -Destination "C:\Program Files\EqualizerAPO\config\SteamDeck.peace" -Force
-Start-Process -FilePath ".\Peace_Setup.exe" -Wait
+Write-Host -NoNewline "- Setting FanControl to run on login: "
+$action = New-ScheduledTaskAction -Execute "C:\DeckUtils\SteamDeckTools\Fancontrol.exe"
+$description = "Start FanControl at Login"
+Register-ScheduledTask -TaskName "FanControl" -Action $action -Trigger $trigger -RunLevel Highest -Description $description -Settings $settings >> $null
+Write-Host -ForegroundColor Green "Done"
+
+Write-Host -NoNewline "- Setting PerformanceOverlay to run on login: "
+$action = New-ScheduledTaskAction -Execute "C:\DeckUtils\SteamDeckTools\PerformanceOverlay.exe"
+$description = "Start PerformanceOverlay at Login"
+Register-ScheduledTask -TaskName "PerformanceOverlay" -Action $action -Trigger $trigger -RunLevel Highest -Description $description -Settings $settings >> $null
+Write-Host -ForegroundColor Green "Done"
+
+Write-Host -NoNewline "- Setting PowerControl to run on login: "
+$action = New-ScheduledTaskAction -Execute "C:\DeckUtils\SteamDeckTools\PowerControl.exe"
+$description = "Start PowerControl at Login"
+Register-ScheduledTask -TaskName "PowerControl" -Action $action -Trigger $trigger -RunLevel Highest -Description $description -Settings $settings >> $null
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host "-----------------------------------------------------------------------"
 Write-Host
 
-Write-Host " Script Completed! Please reboot your system to apply drivers/EDID/configuration. Press enter key to exit."
+Write-Host " Script Completed! Please reboot your system to apply drivers/configuration. Press enter key to exit."
 Read-Host
+
