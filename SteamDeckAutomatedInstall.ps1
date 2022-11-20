@@ -237,7 +237,7 @@ Invoke-WebRequest -URI "https://github.com/ViGEm/HidHide/releases/download/v1.2.
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- SWICD Setup: "
-Invoke-WebRequest -URI "https://github.com/mKenfenheuer/steam-deck-windows-usermode-driver/releases/download/v0.3.2/SWICD_Setup.exe" -OutFile ".\SWICD_Setup.exe"
+Invoke-WebRequest -URI "https://github.com/mKenfenheuer/steam-deck-windows-usermode-driver/releases/download/v0.3.3/SWICD_Setup.exe" -OutFile ".\SWICD_Setup.exe"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- SWICD Config: "
