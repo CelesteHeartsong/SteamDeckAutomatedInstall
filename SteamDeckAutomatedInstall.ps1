@@ -257,7 +257,7 @@ Invoke-WebRequest -URI "https://www.filecroco.com/download-file/download-rivatun
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- SteamDeckTools: "
-Invoke-WebRequest -URI "https://github.com/ayufan-research/steam-deck-tools/releases/download/0.3.12/SteamDeckTools-0.3.12.zip" -OutFile ".\SteamDeckTools.zip"
+Invoke-WebRequest -URI "https://github.com/ayufan-research/steam-deck-tools/releases/download/0.3.17/SteamDeckTools-0.3.17.zip" -OutFile ".\SteamDeckTools.zip"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- EqualizerAPO: "
