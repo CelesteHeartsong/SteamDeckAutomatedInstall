@@ -294,6 +294,10 @@ Write-Host -NoNewline "- Disable GameDVR: "
 Start-Process -FilePath "reg" -ArgumentList "add `"HKEY_CURRENT_USER\System\GameConfigStore`" /f /v GameDVR_Enabled /t REG_DWORD /d 0" -Wait
 Write-Host -ForegroundColor Green "Done"
 
+Write-Host -NoNewline "- Enable Numpad on boot: "
+Set-ItemProperty -Path 'Registry::HKU\.DEFAULT\Control Panel\Keyboard' -Name "InitialKeyboardIndicators" -Value "2"
+Write-Host -ForegroundColor Green "Done"
+
 Write-Host "-----------------------------------------------------------------------"
 Write-Host
 
