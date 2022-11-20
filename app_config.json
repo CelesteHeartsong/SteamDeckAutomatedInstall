@@ -239,17 +239,9 @@
       "Type": "keyboard-shortcut",
       "Data": "[LSHIFT]+[LALT]+m"
     },
-    "BtnSteam+BtnQuickAccess": {
-      "Type": "keyboard-shortcut",
-      "Data": "[LWIN]+a"
-    },
     "BtnQuickAccess+BtnL1": {
       "Type": "keyboard-shortcut",
       "Data": "[LSHIFT]+[LALT]+3"
-    },
-    "BtnQuickAccess+BtnR1": {
-      "Type": "keyboard-shortcut",
-      "Data": "[LSHIFT]+[LALT]+4"
     },
     "BtnQuickAccess+BtnDpadUp": {
       "Type": "keyboard-shortcut",
@@ -298,6 +290,10 @@
     "BtnQuickAccess+BtnR5": {
       "Type": "keyboard-shortcut",
       "Data": "K*"
+    },
+    "BtnSteam+BtnQuickAccess": {
+      "Type": "keyboard-shortcut",
+      "Data": "NUMLOCK"
     }
   },
   "PerProcessControllerConfig": []
