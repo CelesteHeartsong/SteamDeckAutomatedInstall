@@ -257,7 +257,7 @@ Invoke-WebRequest -URI "https://www.filecroco.com/download-file/download-rivatun
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- SteamDeckTools: "
-Invoke-WebRequest -URI "https://github.com/ayufan-research/steam-deck-tools/releases/download/0.3.18/SteamDeckTools-0.3.18.zip" -OutFile ".\SteamDeckTools.zip"
+Invoke-WebRequest -URI "https://github.com/ayufan-research/steam-deck-tools/releases/download/0.4.0/SteamDeckTools-0.4.0.zip" -OutFile ".\SteamDeckTools.zip"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- EqualizerAPO: "
@@ -278,7 +278,7 @@ Write-Host "Applying Windows OS Tweaks"
 Write-Host "-----------------------------------------------------------------------"
 
 Write-Host -NoNewline "- Disabling Hibernation: "
-Start-Process -FilePath "PowerCfg" -ArgumentList "-hibernate off"
+Start-Process -FilePath "PowerCfg" -ArgumentList "/h /type reduced"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Setting CPU Idle Min to 0% (Reduce fan speed): "
