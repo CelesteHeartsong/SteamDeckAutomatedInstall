@@ -228,28 +228,8 @@ Write-Host -NoNewline "- ViGEmBus Setup: "
 Invoke-WebRequest -URI "https://github.com/ViGEm/ViGEmBus/releases/download/v1.21.442.0/ViGEmBus_1.21.442_x64_x86_arm64.exe" -OutFile ".\ViGEmBus_Setup.exe"
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- HVDK Standard Setup (Tetherscript): "
-Invoke-WebRequest -URI "https://tetherscript.s3-us-west-2.amazonaws.com/HVDK/HVDK+Standard_2.1_Installer.exe" -OutFile ".\HVDK_Setup.exe"
-Write-Host -ForegroundColor Green "Done"
-
 Write-Host -NoNewline "- HidHide Setup: "
 Invoke-WebRequest -URI "https://github.com/ViGEm/HidHide/releases/download/v1.2.98.0/HidHide_1.2.98_x64.exe" -OutFile ".\HidHide_Setup.exe"
-Write-Host -ForegroundColor Green "Done"
-
-Write-Host -NoNewline "- SWICD Setup: "
-Invoke-WebRequest -URI "https://github.com/mKenfenheuer/steam-deck-windows-usermode-driver/releases/download/v0.3.3/SWICD_Setup.exe" -OutFile ".\SWICD_Setup.exe"
-Write-Host -ForegroundColor Green "Done"
-
-Write-Host -NoNewline "- SWICD Config: "
-Invoke-WebRequest -URI "https://raw.githubusercontent.com/CelesteHeartsong/SteamDeckAutomatedInstall/main/app_config.json" -Outfile ".\app_config.json"
-Write-Host -ForegroundColor Green "Done"
-
-Write-Host -NoNewline "- Nircmd Package: "
-Invoke-WebRequest -URI "http://www.nirsoft.net/utils/nircmd-x64.zip" -OutFile ".\nircmd.zip"
-Write-Host -ForegroundColor Green "Done"
-
-Write-Host -NoNewline "- RyzenAdj Package: "
-Invoke-WebRequest -URI "https://github.com/FlyGoat/RyzenAdj/releases/download/v0.11.1/ryzenadj-win64.zip" -OutFile ".\ryzenadj.zip"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- RivaTuner Setup: "
@@ -257,7 +237,7 @@ Invoke-WebRequest -URI "https://www.filecroco.com/download-file/download-rivatun
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- SteamDeckTools: "
-Invoke-WebRequest -URI "https://github.com/ayufan-research/steam-deck-tools/releases/download/0.4.0/SteamDeckTools-0.4.0.zip" -OutFile ".\SteamDeckTools.zip"
+Invoke-WebRequest -URI "https://github.com/CelesteHeartsong/SteamDeckAutomatedInstall/blob/9c73f035e7f5bdd95f1d7f1bdc9bce80248ac116/CustomSteamDeckTools.zip" -OutFile ".\SteamDeckTools.zip"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- EqualizerAPO: "
@@ -376,28 +356,12 @@ Write-Host -NoNewline "- ViGEmBus: "
 Start-Process -FilePath ".\ViGEmBus_Setup.exe" -ArgumentList "/qn /norestart" -Wait
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- HVDK (Tetherscript): "
-Start-Process -FilePath ".\HVDK_Setup.exe" -ArgumentList "/VERYSILENT" -Wait
-Write-Host -ForegroundColor Green "Done"
-
 Write-Host -NoNewline "- HidHide: "
 Start-Process -FilePath ".\HidHide_Setup.exe" -ArgumentList "/qn /norestart" -Wait
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- SWICD: "
-Start-Process -FilePath ".\SWICD_Setup.exe" -ArgumentList "/S" -Wait
-Write-Host -ForegroundColor Green "Done"
-
 Write-Host -NoNewline "- Create C:\DeckUtils: "
 New-Item C:\DeckUtils -ItemType Directory -ErrorAction SilentlyContinue >> $null
-Write-Host -ForegroundColor Green "Done"
-
-Write-Host -NoNewline "- NirCmd: "
-Expand-Archive ".\nircmd.zip" "C:\DeckUtils\nircmd" -Force
-Write-Host -ForegroundColor Green "Done"
-
-Write-Host -NoNewline "- RyzenAdj: "
-Expand-Archive ".\ryzenadj.zip" "C:\DeckUtils\ryzenadj" -Force
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- RivaTuner: "
@@ -420,16 +384,6 @@ Write-Host
 
 Write-Host "Configuring Software"
 Write-Host "-----------------------------------------------------------------------"
-
-Write-Host -NoNewline "- Uninstalling HVDK Gamepad/Joystick Drivers: "
-Start-Process -FilePath "C:\Program Files (x86)\HID Virtual Device Kit Standard 2.1\Drivers Signed\Gamepad\uninstall.bat" -Wait
-Start-Process -FilePath "C:\Program Files (x86)\HID Virtual Device Kit Standard 2.1\Drivers Signed\Joystick\uninstall.bat" -Wait
-Write-Host -ForegroundColor Green "Done"
-
-Write-Host -NoNewline "- Adding Default SWICD config: "
-New-Item ~\Documents\SWICD -ItemType Directory -ErrorAction SilentlyContinue >> $null
-Copy-Item ".\app_config.json" -Destination "~\Documents\SWICD\app_config.json" -Force
-Write-Host -ForegroundColor Green "Done"
 
 $trigger = New-ScheduledTaskTrigger -AtLogOn
 $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
@@ -456,6 +410,12 @@ Write-Host -NoNewline "- Setting PowerControl to run on login: "
 $action = New-ScheduledTaskAction -Execute "C:\DeckUtils\SteamDeckTools\PowerControl.exe"
 $description = "Start PowerControl at Login"
 Register-ScheduledTask -TaskName "PowerControl" -Action $action -Trigger $trigger -RunLevel Highest -Description $description -Settings $settings >> $null
+Write-Host -ForegroundColor Green "Done"
+
+Write-Host -NoNewline "- Setting SteamController to run on login: "
+$action = New-ScheduledTaskAction -Execute "C:\DeckUtils\SteamDeckTools\SteamController.exe"
+$description = "Start SteamController at Login"
+Register-ScheduledTask -TaskName "SteamController" -Action $action -Trigger $trigger -RunLevel Highest -Description $description -Settings $settings >> $null
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host "-----------------------------------------------------------------------"
