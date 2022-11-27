@@ -236,8 +236,8 @@ Write-Host -NoNewline "- RivaTuner Setup: "
 Invoke-WebRequest -URI "https://www.filecroco.com/download-file/download-rivatuner-statistics-server/14914/2360/" -OutFile ".\RivaTuner_Setup.exe"
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- SteamDeckTools: "
-Invoke-WebRequest -URI "https://github.com/CelesteHeartsong/SteamDeckAutomatedInstall/blob/9c73f035e7f5bdd95f1d7f1bdc9bce80248ac116/CustomSteamDeckTools.zip" -OutFile ".\SteamDeckTools.zip"
+Write-Host -NoNewline "- Custom SteamDeckTools: "
+Invoke-WebRequest -URI "https://github.com/CelesteHeartsong/SteamDeckAutomatedInstall/raw/main/CustomSteamDeckTools.zip" -OutFile ".\SteamDeckTools.zip"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- EqualizerAPO: "
