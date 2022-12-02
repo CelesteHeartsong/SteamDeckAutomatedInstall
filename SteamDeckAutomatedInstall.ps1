@@ -200,8 +200,8 @@ Write-Host -NoNewline "- Audio Drivers 2/2 from Valve (NAU88L21): "
 Invoke-WebRequest -URI "https://steamdeck-packages.steamos.cloud/misc/windows/drivers/NAU88L21_x64_1.0.6.0_WHQL%20-%20DUA_BIQ_WHQL.zip" -OutFile ".\Audio_Drivers_2.zip"
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- Wireless LAN Drivers from Realtek: "
-Invoke-WebRequest -URI "https://catalog.s.download.windowsupdate.com/c/msdownload/update/driver/drvs/2022/08/0270b436-5cac-4a52-aa88-e8e1fb7a999d_a5b613e26699adc437dca952f733dbcf5f184dee.cab" -OutFile ".\WLAN_Drivers.cab"
+Write-Host -NoNewline "- Unlocked Wireless LAN Drivers from RTK: "
+Invoke-WebRequest -URI "https://www.techpowerup.com/forums/attachments/rtk-killer-wi-fi-5-8822ce-xtreme-802-11ac_v2024-10-227-2-self-signed-fix2-zip.271297/" -OutFile ".\WLAN_Drivers.zip"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Bluetooth Drivers from Realtek: "
@@ -236,7 +236,7 @@ Write-Host -NoNewline "- RivaTuner Setup: "
 Invoke-WebRequest -URI "https://www.filecroco.com/download-file/download-rivatuner-statistics-server/14914/2360/" -OutFile ".\RivaTuner_Setup.exe"
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- Custom SteamDeckTools: "
+Write-Host -NoNewline "- SteamDeckTools: "
 Invoke-WebRequest -URI "https://github.com/CelesteHeartsong/SteamDeckAutomatedInstall/raw/main/CustomSteamDeckTools.zip" -OutFile ".\SteamDeckTools.zip"
 Write-Host -ForegroundColor Green "Done"
 
@@ -274,10 +274,6 @@ Write-Host -NoNewline "- Disable GameDVR: "
 Start-Process -FilePath "reg" -ArgumentList "add `"HKEY_CURRENT_USER\System\GameConfigStore`" /f /v GameDVR_Enabled /t REG_DWORD /d 0" -Wait
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- Enable Numpad on boot: "
-Set-ItemProperty -Path 'Registry::HKU\.DEFAULT\Control Panel\Keyboard' -Name "InitialKeyboardIndicators" -Value "2"
-Write-Host -ForegroundColor Green "Done"
-
 Write-Host "-----------------------------------------------------------------------"
 Write-Host
 
@@ -305,9 +301,8 @@ Start-Process -FilePath "PNPUtil.exe" -ArgumentList "/add-driver `".\Audio_Drive
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- WLAN Drivers: "
-New-Item .\WLAN_Drivers -ItemType Directory -ErrorAction SilentlyContinue >> $null
-Start-Process -FilePath "expand.exe" -ArgumentList "-F:* .\WLAN_Drivers.cab .\WLAN_Drivers" -Wait
-Start-Process -FilePath "PNPUtil.exe" -ArgumentList "/add-driver `".\WLAN_Drivers\netrtwlane.inf`" /install" -Wait
+Expand-Archive ".\WLAN_Drivers.zip" ".\WLAN_Drivers" -Force
+Start-Process  -FilePath "cmd.exe" -ArgumentList '/c  ".\WLAN_Drivers\RTK Killer Wi-Fi 5 8822CE Xtreme 802.11ac_v2024.10.227.2-[Self-Signed]Fix2\setup.bat"' -Wait
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Bluetooth Drivers: "
