@@ -228,10 +228,6 @@ Write-Host -NoNewline "- ViGEmBus Setup: "
 Invoke-WebRequest -URI "https://github.com/ViGEm/ViGEmBus/releases/download/v1.21.442.0/ViGEmBus_1.21.442_x64_x86_arm64.exe" -OutFile ".\ViGEmBus_Setup.exe"
 Write-Host -ForegroundColor Green "Done"
 
-Write-Host -NoNewline "- HidHide Setup: "
-Invoke-WebRequest -URI "https://github.com/ViGEm/HidHide/releases/download/v1.2.98.0/HidHide_1.2.98_x64.exe" -OutFile ".\HidHide_Setup.exe"
-Write-Host -ForegroundColor Green "Done"
-
 Write-Host -NoNewline "- RivaTuner Setup: "
 Invoke-WebRequest -URI "https://www.filecroco.com/download-file/download-rivatuner-statistics-server/14914/2360/" -OutFile ".\RivaTuner_Setup.exe"
 Write-Host -ForegroundColor Green "Done"
@@ -349,10 +345,6 @@ Write-Host "--------------------------------------------------------------------
 
 Write-Host -NoNewline "- ViGEmBus: "
 Start-Process -FilePath ".\ViGEmBus_Setup.exe" -ArgumentList "/qn /norestart" -Wait
-Write-Host -ForegroundColor Green "Done"
-
-Write-Host -NoNewline "- HidHide: "
-Start-Process -FilePath ".\HidHide_Setup.exe" -ArgumentList "/qn /norestart" -Wait
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Create C:\DeckUtils: "
