@@ -233,7 +233,7 @@ Invoke-WebRequest -URI "https://www.filecroco.com/download-file/download-rivatun
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- SteamDeckTools: "
-Invoke-WebRequest -URI "https://github.com/CelesteHeartsong/SteamDeckAutomatedInstall/raw/main/CustomSteamDeckTools.zip" -OutFile ".\SteamDeckTools.zip"
+Invoke-WebRequest -URI "https://github.com/ayufan/steam-deck-tools/releases/download/0.5.31/SteamDeckTools-0.5.31.zip" -OutFile ".\SteamDeckTools.zip"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- EqualizerAPO: "
@@ -382,27 +382,42 @@ Register-ScheduledTask -TaskName "RivaTuner" -Action $action -Trigger $trigger -
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Setting FanControl to run on login: "
-$action = New-ScheduledTaskAction -Execute "C:\DeckUtils\SteamDeckTools\Fancontrol.exe"
-$description = "Start FanControl at Login"
-Register-ScheduledTask -TaskName "FanControl" -Action $action -Trigger $trigger -RunLevel Highest -Description $description -Settings $settings >> $null
+Start-Process -FilePath "C:\DeckUtils\SteamDeckTools\FanControl.exe" -ArgumentList "-run-on-startup"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Setting PerformanceOverlay to run on login: "
-$action = New-ScheduledTaskAction -Execute "C:\DeckUtils\SteamDeckTools\PerformanceOverlay.exe"
-$description = "Start PerformanceOverlay at Login"
-Register-ScheduledTask -TaskName "PerformanceOverlay" -Action $action -Trigger $trigger -RunLevel Highest -Description $description -Settings $settings >> $null
+Start-Process -FilePath "C:\DeckUtils\SteamDeckTools\PerformanceOverlay.exe" -ArgumentList "-run-on-startup"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Setting PowerControl to run on login: "
-$action = New-ScheduledTaskAction -Execute "C:\DeckUtils\SteamDeckTools\PowerControl.exe"
-$description = "Start PowerControl at Login"
-Register-ScheduledTask -TaskName "PowerControl" -Action $action -Trigger $trigger -RunLevel Highest -Description $description -Settings $settings >> $null
+Start-Process -FilePath "C:\DeckUtils\SteamDeckTools\PowerControl.exe" -ArgumentList "-run-on-startup"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- Setting SteamController to run on login: "
-$action = New-ScheduledTaskAction -Execute "C:\DeckUtils\SteamDeckTools\SteamController.exe"
-$description = "Start SteamController at Login"
-Register-ScheduledTask -TaskName "SteamController" -Action $action -Trigger $trigger -RunLevel Highest -Description $description -Settings $settings >> $null
+Start-Process -FilePath "C:\DeckUtils\SteamDeckTools\SteamController.exe" -ArgumentList "-run-on-startup"
+Write-Host -ForegroundColor Green "Done"
+
+Write-Host -NoNewline "- Creating Desktop Shortcuts for SteamDeckTools: "
+$shell = New-Object -comObject WScript.Shell
+$shortcut = $shell.CreateShortcut("$Home\Desktop\FanControl.lnk")
+$shortcut.TargetPath = "C:\DeckUtils\SteamDeckTools\FanControl.exe"
+$shortcut.Save()
+
+$shell = New-Object -comObject WScript.Shell
+$shortcut = $shell.CreateShortcut("$Home\Desktop\PerformanceOverlay.lnk")
+$shortcut.TargetPath = "C:\DeckUtils\SteamDeckTools\PerformanceOverlay.exe"
+$shortcut.Save()
+
+$shell = New-Object -comObject WScript.Shell
+$shortcut = $shell.CreateShortcut("$Home\Desktop\PowerControl.lnk")
+$shortcut.TargetPath = "C:\DeckUtils\SteamDeckTools\PowerControl.exe"
+$shortcut.Save()
+
+$shell = New-Object -comObject WScript.Shell
+$shortcut = $shell.CreateShortcut("$Home\Desktop\SteamController.lnk")
+$shortcut.TargetPath = "C:\DeckUtils\SteamDeckTools\SteamController.exe"
+$shortcut.Save()
+
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host "-----------------------------------------------------------------------"
