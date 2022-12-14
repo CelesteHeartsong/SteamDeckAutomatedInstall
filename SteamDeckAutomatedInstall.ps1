@@ -233,7 +233,7 @@ Invoke-WebRequest -URI "https://www.filecroco.com/download-file/download-rivatun
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- SteamDeckTools: "
-Invoke-WebRequest -URI "https://github.com/ayufan/steam-deck-tools/releases/download/0.5.31/SteamDeckTools-0.5.31.zip" -OutFile ".\SteamDeckTools.zip"
+Invoke-WebRequest -URI "https://github.com/ayufan/steam-deck-tools/releases/download/0.5.36/SteamDeckTools-0.5.36-portable.zip" -OutFile ".\SteamDeckTools.zip"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- EqualizerAPO: "
@@ -425,4 +425,3 @@ Write-Host
 
 Write-Host " Script Completed! Please reboot your system to apply drivers/configuration. Press enter key to exit."
 Read-Host
-
