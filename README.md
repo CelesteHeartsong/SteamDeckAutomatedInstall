@@ -11,7 +11,7 @@
 - EquilizerAPO will create a popup asking which audio device to apply to.
    - Select "Speakers" then continue
 - SteamDeckTools configuration will prompt for consent to submitting anonymous error and version data
---- Yes will allow this data to be submit
---- No will disable the submission of data, but will also disable auto updating
+   - Yes will allow this data to be submit
+   - No will disable the submission of data, but will also disable auto updating
 - Allow script to run to completion
 - Reboot system once script is complete
