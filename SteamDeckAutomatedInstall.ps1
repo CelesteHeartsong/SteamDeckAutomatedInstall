@@ -233,7 +233,7 @@ Invoke-WebRequest -URI "https://www.filecroco.com/download-file/download-rivatun
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- SteamDeckTools: "
-Invoke-WebRequest -URI "https://github.com/ayufan/steam-deck-tools/releases/download/0.5.36/SteamDeckTools-0.5.36-portable.zip" -OutFile ".\SteamDeckTools.zip"
+Invoke-WebRequest -URI "https://github.com/ayufan/steam-deck-tools/releases/download/0.5.47/SteamDeckTools-0.5.47-portable.zip" -OutFile ".\SteamDeckTools.zip"
 Write-Host -ForegroundColor Green "Done"
 
 Write-Host -NoNewline "- EqualizerAPO: "
@@ -380,6 +380,17 @@ $action = New-ScheduledTaskAction -Execute "C:\Program Files (x86)\RivaTuner Sta
 $description = "Start RivaTuner at Login"
 Register-ScheduledTask -TaskName "RivaTuner" -Action $action -Trigger $trigger -RunLevel Highest -Description $description -Settings $settings >> $null
 Write-Host -ForegroundColor Green "Done"
+
+Write-Host -NoNewline "- Request User Consent on use of SteamDeckTools error reporting: "
+$userconsenttotelemetry = [System.Windows.Forms.MessageBox]::Show("Would you like to assist with improvements to SteamDeckTools by submitting anonymous error logs and version statistics to assist with addressing bugs?  If this is disabled, updates will have to be done manually." , "SteamDeckTools Error Reporting Consent" , 4, 32)
+Write-Host -ForegroundColor Green "Done"
+
+if($userconsenttotelemetry -eq "No") {
+    Write-Host -NoNewline "--- Disabling SteamDeckTools Error Reporting and Updater: "
+    New-Item "C:\DeckUtils\SteamDeckTools\DisableCheckForUpdates.txt" >> $null
+    New-Item "C:\DeckUtils\SteamDeckTools\DisableSentryTracking.txt" >> $null
+    Write-Host -ForegroundColor Green "Done"
+}
 
 Write-Host -NoNewline "- Setting FanControl to run on login: "
 Start-Process -FilePath "C:\DeckUtils\SteamDeckTools\FanControl.exe" -ArgumentList "-run-on-startup"
